@@ -203,7 +203,9 @@ void PFCluster::calculatePosition( int algo,
   // cerr<<"seed id "<<seedId<<endl;
   for (unsigned ic=0; ic<rechits_.size(); ic++ ) {
     
+
     const reco::PFRecHit* rechit = rechits_[ic].getRecHit();
+    // cout<<"rechit "<<(*rechit)<<endl;
 
     // cerr<<"rechit id "<<rechit->detId()<<endl;
     if(rechit->detId() != seedId) {
@@ -211,7 +213,7 @@ void PFCluster::calculatePosition( int algo,
       if( ncrystals == 5 ) {
 	// cerr<<"ncrystals = 5"<<endl;
 	if(!rechit->isNeighbour4(seedId) ) {
-	  // cerr<<"continue"<<endl;
+	  // cout<<"continue (not 5) "<<endl;
 	  continue;
 	}
       }
@@ -219,6 +221,7 @@ void PFCluster::calculatePosition( int algo,
 	// cerr<<"ncrystals = 9"<<endl;
 	if(!rechit->isNeighbour8(seedId) ) {
 	  // cerr<<"continue"<<endl;
+	  // cout<<"continue (not 9) "<<endl;
 	  continue;
 	}
       }
@@ -235,6 +238,7 @@ void PFCluster::calculatePosition( int algo,
       break;
     case POSCALC_LOG:
       norm =   max(0., log(theRecHitEnergy/p1 ));
+      // cout<<"POSCALC_LOG "<<theRecHitEnergy<<" "<<p1<<" "<<norm<<endl;
       break;
     default:
       cerr<<"algo "<<algo<<" not defined !"<<endl;
@@ -260,6 +264,7 @@ void PFCluster::calculatePosition( int algo,
   // normalize uncorrected position
   // assert(normalize);
   if( normalize < 1e-9 ) {
+    // cout<<"PFCluster::calculatePosition : normalize too small !! "<<normalize<<endl;
     //    cerr<<"--------------------"<<endl;
     //    cerr<<(*this)<<endl;
     clusterposxyz.SetXYZ(0,0,0);
@@ -277,6 +282,10 @@ void PFCluster::calculatePosition( int algo,
   posrep_ = clusterpos;
   posxyz_ = clusterposxyz;
 
+//   cout<<"PFCluster::calculatePosition : uncorrected "
+//       <<posxyz_.X()<<" "
+//       <<posxyz_.Y()<<" "
+//       <<posxyz_.Z()<<endl;
 
   // correction of the rechit position, 
   // according to the depth, only for ECAL 
