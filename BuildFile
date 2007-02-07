@@ -1,12 +1,17 @@
-<flags LCGDICT_ARGS="--deep">
-<use name=FWCore/MessageLogger>
+<use name=DataFormats/Common>
 <use name=DataFormats/DetId>
 <use name=DataFormats/Math>
-<use name=DataFormats/Common>
+<use name=FWCore/MessageLogger>
+<use name=FWCore/Utilities>
+<use name=rootmath>
+<use name=rootrflx>
+<use name=root>
 <export>
- <lib name=DataFormatsParticleFlowReco>
- <use name=FWCore/MessageLogger>
- <use name=DataFormats/DetId>
- <use name=DataFormats/Math>
- <use name=DataFormats/Common>
+  <use name=DataFormats/Common>
+  <use name=DataFormats/DetId>
+  <use name=DataFormats/Math>
+  <use name=rootmath>
+  <use name=root>
+  <lib name=DataFormatsParticleFlowReco>
 </export>
+
