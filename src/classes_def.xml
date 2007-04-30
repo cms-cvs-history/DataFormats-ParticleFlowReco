@@ -22,6 +22,13 @@
   <class name="edm::Ref< std::vector<reco::PFRecHit>, reco::PFRecHit, edm::refhelper::FindUsingAdvance<std::vector<reco::PFRecHit>,reco::PFRecHit>  >"/>
 
   <class name="reco::PFTrack"/>
+<!--    <class name="edm::RefToBase<reco::Track>"/>
+  <class name="edm::RefToBase::BaseHolder<reco::Track>"/>
+  <class name="edm::RefToBase::Holder<reco::GsfTrack>"/>
+  <class name="edm::Holder<reco::TrackTransientTrack>"/>
+  <class name="edm::Holder<reco::GsfTransientTrack>"/> 
+  <class name="edm::Ref< std::vector<reco::Track>, reco::Track, edm::refhelper::FindUsingAdvance<std::vector<reco::Track>,reco::Track> >"/>
+-->  
 
   <class name="reco::PFTrajectoryPoint">
     <field name="posrep_" transient="true"/>
@@ -45,7 +52,10 @@
   <class name="edm::OwnVector<reco::PFBlockElement, edm::ClonePolicy<reco::PFBlockElement> >"/>
   <class name="edm::Wrapper<edm::OwnVector<reco::PFBlockElement, edm::ClonePolicy<reco::PFBlockElement> > >" />
 
-  <class name="reco::PFBlockElementTrack"/> 
+  <class name="reco::PFBlockElementTrack"> 
+    <field name="trackRefPF_" transient="true"/>
+  </class>
+
   <class name="reco::PFBlockElementCluster"/> 
 
   <class name="reco::PFBlock"/>
