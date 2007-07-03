@@ -59,9 +59,9 @@ ostream& reco::operator<<(ostream& out,
   for(unsigned i=0; i<particle.daughterIds_.size(); i++) 
     out<<particle.daughterIds_[i]<<" ";
   
-  out<<endl;
-  for(unsigned i=0; i<particle.trajectoryPoints_.size(); i++) 
-    out<<particle.trajectoryPoints_[i]<<endl;
+//   out<<endl;
+//   for(unsigned i=0; i<particle.trajectoryPoints_.size(); i++) 
+//     out<<particle.trajectoryPoints_[i]<<endl;
 
   return out;
 }
