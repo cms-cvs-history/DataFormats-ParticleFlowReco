@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include "Rtypes.h"
 
 #include "DataFormats/Math/interface/Point3D.h"
 #include "DataFormats/Math/interface/Vector3D.h"
