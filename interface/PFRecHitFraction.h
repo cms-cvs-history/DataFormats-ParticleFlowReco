@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 
+#include "DataFormats/Common/interface/Ref.h"
 #include "DataFormats/ParticleFlowReco/interface/PFRecHitFwd.h" 
 
 namespace reco {
