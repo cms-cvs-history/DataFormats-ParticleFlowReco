@@ -54,6 +54,9 @@
 #include "DataFormats/ParticleFlowReco/interface/PFDisplacedVertexSeedFwd.h"
 #include "DataFormats/ParticleFlowReco/interface/PFDisplacedVertexFwd.h"
 
+#include "DataFormats/ParticleFlowReco/interface/PreId.h"
+#include "DataFormats/ParticleFlowReco/interface/PreIdFwd.h"
+
 #include <map>
 
 namespace {
@@ -182,5 +185,10 @@ namespace {
 
     std::pair<std::pair<unsigned int,unsigned int>,std::pair<unsigned int,unsigned int> > dummy1013;
 
+
+    /* For PreID */
+    reco::PreId dummy81;
+    std::vector<reco::PreId> dummy82;
+    edm::Wrapper<std::vector<reco::PreId> > dummy83;
   };
 }

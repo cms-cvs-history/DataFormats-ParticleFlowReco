@@ -176,7 +176,9 @@
 
   <class name="std::pair<std::pair<unsigned int,unsigned int>,std::pair<unsigned int,unsigned int> >"/>
 
-
+  <class name="reco::PreId"/>
+  <class name="std::vector<reco::PreId>"/>
+  <class name="edm::Wrapper<std::vector<reco::PreId> >"/>
 
 </selection>
 <exclusion>
