@@ -10,7 +10,11 @@ namespace reco
 {
   class PreId{
   public:
-    PreId(){}
+  PreId():trackRef_(reco::TrackRef()),clusterRef_(reco::PFClusterRef()),
+      matchingDeltaEta_(0.),matchingDeltaPhi_(0.),matchingChiEta_(0.),matchingChiPhi_(0.),
+      matchingChi2_(0.),matchingEop_(0.),kfPt_(0.),kfEta_(0.),EcalPos_(math::XYZPoint()),
+      meanShower_(math::XYZPoint()),TkId_(false),EcalMatching_(false),PSMatching_(false),
+      chikfred_(0.),trackFilt_(false),newchikfred_(0.),dpt_(0.),mva_(0.),goodpreid_(false){}
     void setTrack(reco::TrackRef trackref, float eta, float pt,float chi2red, int nhit)     {
       trackRef_ = trackref;
       kfEta_ = eta;
@@ -45,6 +49,31 @@ namespace reco
       goodpreid_ = accepted;
     }
 
+    /// Access methods
+    inline float deltaEtaMatch() const {return matchingDeltaEta_;}
+    inline float deltaPhiMatch() const {return matchingDeltaPhi_;}
+    inline float chiEtaMatch() const {return matchingChiEta_;}
+    inline float chiPhiMatch() const {return matchingChiPhi_;}
+    inline float chi2Match() const {return matchingChi2_;}
+    inline float eopMatch() const {return matchingEop_;}
+    inline float pt() const {return kfPt_;}
+    inline float eta() const {return kfEta_;}
+    inline float kfChi2() const {return chikfred_;}
+    inline float kfNHits() const {return nhit_;}
+
+    inline bool ecalMatching() const {return EcalMatching_;}
+    const math::XYZPoint & ecalPos() const {return EcalPos_;}
+    const math::XYZPoint & meanShower() const {return meanShower_;}
+    inline bool psMatching() const {return PSMatching_;}
+    
+    inline float gsfChi2Ratio() const {return chiRatio_;}
+    inline float kfNewChi2() const {return newchikfred_;}
+    inline bool trackFiltered() const {return trackFilt_;}
+    inline float mva() const {return mva_;}
+    inline bool preided() const {return goodpreid_;}
+    reco::TrackRef trackRef() const {return trackRef_;}
+    PFClusterRef clusterRef() const {return clusterRef_;}
+
   private:
     reco::TrackRef trackRef_;
       //    PFRecTrackRef trackRefPF_;
@@ -58,7 +87,6 @@ namespace reco
     float matchingEop_;
     float kfPt_;
     float kfEta_;
-    float kfChi2_;
     math::XYZPoint EcalPos_;
     math::XYZPoint meanShower_;
     bool TkId_;
