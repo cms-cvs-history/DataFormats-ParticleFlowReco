@@ -71,6 +71,7 @@ namespace reco
     inline bool trackFiltered() const {return trackFilt_;}
     inline float mva() const {return mva_;}
     inline bool preided() const {return goodpreid_;}
+    inline float dpt() const {return dpt_;}
     reco::TrackRef trackRef() const {return trackRef_;}
     PFClusterRef clusterRef() const {return clusterRef_;}
 
