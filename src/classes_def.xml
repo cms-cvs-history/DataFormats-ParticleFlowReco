@@ -86,6 +86,7 @@
 
 
   <class name="reco::PFBlockElementCluster"/> 
+  <class name="reco::PFBlockElementSuperCluster"/> 
 
   <class name="std::map<unsigned int,reco::PFBlock::Link>"/>
   <class name="reco::PFBlock::Link"/>
