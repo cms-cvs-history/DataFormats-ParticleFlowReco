@@ -11,9 +11,7 @@ double PFCluster::depthCorB_ = 7.3;
 double PFCluster::depthCorAp_ = 0.89;
 double PFCluster::depthCorBp_ = 4.0;
 
-
 unsigned PFCluster::instanceCounter_ = 0;
-
 
 PFCluster::PFCluster(PFLayer::Layer layer, double energy,
                      double x, double y, double z ) : 

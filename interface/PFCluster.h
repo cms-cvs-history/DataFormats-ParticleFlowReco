@@ -111,7 +111,33 @@ namespace reco {
       depthCorBp_ = bp; 
     } 
     
+
+    /// some classes to make this fit into a template footprint
+    /// for RecoPFClusterRefCandidate so we can make jets and MET
+    /// out of PFClusters.
     
+    /// dummy charge
+    double charge() const { return 0;}
+
+    /// transverse momentum, massless approximation
+    double pt() const { 
+      return (energy() * sin(posrep_.theta()));
+    }
+
+    /// angle
+    double theta() const { 
+      return posrep_.theta();
+    }
+    
+    /// dummy vertex access
+    math::XYZPoint const & vertex() const { 
+      static math::XYZPoint dummyVtx(0,0,0);
+      return dummyVtx;      
+    }
+    double vx() const { return vertex().x(); }
+    double vy() const { return vertex().y(); }
+    double vz() const { return vertex().z(); }    
+
   private:
     
     /// vector of rechit fractions (transient)
