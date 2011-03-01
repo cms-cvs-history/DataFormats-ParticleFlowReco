@@ -53,11 +53,6 @@ namespace reco {
     const reco::TrackRef& 
       trackRef() const {return trackRef_;}
 
-    /// \set the significance of the signed transverse impact parameter
-    void setSTIP(float STIP){STIP_=STIP;}
-
-    /// \return the significance of the signed transverse impact parameter
-    const float STIP() const{return STIP_;}
 
   
     friend  std::ostream& operator<<(std::ostream& out, 
@@ -73,7 +68,7 @@ namespace reco {
 
     /// reference to corresponding track
     reco::TrackRef        trackRef_;
-    float STIP_;
+
 
   };
 
