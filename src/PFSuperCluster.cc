@@ -75,8 +75,7 @@ PFSuperCluster::PFSuperCluster(const std::vector< reco::PFCluster >  clusters) {
   double posPhi = 0.0;
   double posRho = 1.0;
   double w0_ = 4.2;
-  const double clusterEnergy = energy();
-  if (clusterEnergy>0.0 && recHitFractions().size()>0) {
+  if (superClusterEnergy>0.0 && recHitFractions().size()>0) {
     const std::vector <reco::PFRecHitFraction >& pfhitsandfracs = recHitFractions();
     for (std::vector<reco::PFRecHitFraction>::const_iterator it = pfhitsandfracs.begin(); it != pfhitsandfracs.end(); ++it) {
       const reco::PFRecHitRef rechit = it->recHitRef();
@@ -84,21 +83,18 @@ PFSuperCluster::PFSuperCluster(const std::vector< reco::PFCluster >  clusters) {
       double hitPhi = rechit->positionREP().Phi();
       double hitRho = rechit->positionREP().Rho();
       double hitEnergy = rechit->energy();
-      const double w = std::max(0.0, w0_ + log(hitEnergy / clusterEnergy));
+      const double w = std::max(0.0, w0_ + log(hitEnergy / superClusterEnergy));
       denominator += w;
       numeratorEta += w*hitEta;
       numeratorPhi += w*hitPhi;
       numeratorRho += w*hitRho;
     }
-    double posEta = numeratorEta/denominator;
-    double posPhi = numeratorPhi/denominator;
-    double posRho = numeratorRho/denominator;
+    posEta = numeratorEta/denominator;
+    posPhi = numeratorPhi/denominator;
+    posRho = numeratorRho/denominator;
   }
 
-  REPPoint posEtaPhiRho;
-  posEtaPhiRho.SetRho(posRho);
-  posEtaPhiRho.SetEta(posEta);
-  posEtaPhiRho.SetPhi(posPhi);
+  REPPoint posEtaPhiRho(posRho,posEta,posPhi);
 
   math::XYZPoint superClusterPosition(posEtaPhiRho.X(),posEtaPhiRho.Y(),posEtaPhiRho.Z());
 
