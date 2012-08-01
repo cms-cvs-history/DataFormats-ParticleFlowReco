@@ -1,4 +1,6 @@
 #include "DataFormats/ParticleFlowReco/interface/PFSuperCluster.h"
+#include "DataFormats/GeometryVector/interface/Pi.h"
+
 
 using namespace std;
 using namespace reco;
@@ -81,6 +83,8 @@ PFSuperCluster::PFSuperCluster(const std::vector< reco::PFCluster >  clusters) {
       const reco::PFRecHitRef rechit = it->recHitRef();
       double hitEta = rechit->positionREP().Eta();
       double hitPhi = rechit->positionREP().Phi();
+      if (hitPhi > + Geom::pi()) { hitPhi = Geom::twoPi() - hitPhi; }
+      if (hitPhi < - Geom::pi()) { hitPhi = Geom::twoPi() - hitPhi; }
       double hitRho = rechit->positionREP().Rho();
       double hitEnergy = rechit->energy();
       const double w = std::max(0.0, w0_ + log(hitEnergy / superClusterEnergy));
